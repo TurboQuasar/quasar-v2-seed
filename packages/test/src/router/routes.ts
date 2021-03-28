@@ -58,11 +58,11 @@ export const constantRoutes: RouteRecordRaw[] = [
   //   redirect: '/dashboard',
   //   meta: { hidden: true },
   // },
-  // {
-  //   path: '/login',
-  //   component: () => import(/* webpackChunkName: "login" */ 'pages/login/index.vue'),
-  //   meta: { hidden: true },
-  // },
+  {
+    path: '/login',
+    component: () => import(/* webpackChunkName: "login" */ 'pages/login/index.vue'),
+    meta: { hidden: true },
+  },
   {
     path: '/dashboard',
     component: Layout,
