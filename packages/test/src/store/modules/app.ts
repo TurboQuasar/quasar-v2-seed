@@ -3,7 +3,7 @@ import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-dec
 import { getSidebarStatus, getSize, setSidebarStatus, setLanguage, setSize } from 'src/utils/cookies';
 import {store} from '../index';
 import {nextTick} from 'vue';
-import {useI18n} from 'vue-i18n';
+import {i18n} from '../../boot/i18n';
 export enum DeviceType {
   Mobile,
   Desktop,
@@ -19,12 +19,9 @@ class App extends VuexModule implements IAppState {
   public device = DeviceType.Desktop;
   public refreshPage = true;
   public language = getLanguage() || 'en';
-  get i18n() {
-    return useI18n()
-  }
   @Mutation
   public SET_LANGUAGE(status: any) {
-    this.i18n.locale = status;
+    i18n.global.locale = status;
     this.language = status;
     setLanguage(this.language);
   }

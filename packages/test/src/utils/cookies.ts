@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import * as Cookies from 'js-cookie';
 import settings from 'src/settings.json';
 // https://github.com/js-cookie/js-cookie/wiki/Frequently-Asked-Questions#expire-cookies-in-less-than-a-day
 // const in30Minutes = 1 / 48;

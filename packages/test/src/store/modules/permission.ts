@@ -61,13 +61,7 @@ class Permission extends VuexModule implements IPermissionState {
   public dynamicRoutes: RouteRecordRaw[] = [];
 
   @Mutation
-  private SET_ROUTES(routes: RouteRecordRaw[]) {
-    this.routes = constantRoutes.concat(routes);
-    this.dynamicRoutes = routes;
-  }
-
-  @Action({ rawError: true })
-  public GenerateRoutes(data: any) {
+  private GENERATE_ROUTES(data) {
     const { pagePermissionId, pageEditPermission } = data;
     if (settings.adminName.includes(UserModule.username)) {
       pagePermissionId.push('-1');
@@ -75,7 +69,13 @@ class Permission extends VuexModule implements IPermissionState {
     let accessedRoutes: RouteRecordRaw[] = [];
     accessedRoutes = filterAsyncRoutes(asyncRoutes, pagePermissionId);
     accessedRoutes = filterAsyncRoutesEdit(accessedRoutes, pageEditPermission, pagePermissionId);
-    this.SET_ROUTES(accessedRoutes);
+    this.routes = constantRoutes.concat(accessedRoutes);
+    this.dynamicRoutes = accessedRoutes;
+  }
+
+  @Action({ rawError: true })
+  public GenerateRoutes(data: any) {
+    this.GENERATE_ROUTES(data);
   }
 }
 

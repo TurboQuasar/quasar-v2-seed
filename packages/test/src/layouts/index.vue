@@ -7,17 +7,17 @@
           <q-btn dense flat round :icon="drawerLeft ? 'menu_open' : 'menu'" @click="setLeftDrawerOpen" />
           <q-toolbar-title class="row a-center">
             <q-breadcrumbs active-color="white" separator-color="white" class="fs-14 h-16" :key="+new Date()">
-              <q-breadcrumbs-el :label="$t(`routes.${route.meta.title}`)" :name="curRouteFather" v-for="(route, index) in breadcrumbs" :key="index" />
+              <q-breadcrumbs-el :label="$i18n.t(`routes.${route.meta.title}`)" :name="curRouteFather" v-for="(route, index) in breadcrumbs" :key="index" />
             </q-breadcrumbs>
           </q-toolbar-title>
           <q-btn-dropdown stretch flat align="center" label="v0.0.0.1"></q-btn-dropdown>
           <q-separator dark vertical />
           <q-btn stretch flat icon="refresh" @click="refreshCurPage">
-            <q-tooltip>{{ $t('tip.refreshCurPage') }}</q-tooltip>
+            <q-tooltip>{{ $i18n.t('tip.refreshCurPage') }}</q-tooltip>
           </q-btn>
           <q-separator dark vertical />
           <q-btn stretch flat @click="$q.fullscreen.toggle()" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'">
-            <q-tooltip>{{ !$q.fullscreen.isActive ? `${$t('tip.fullscreen')}` : `${$t('tip.cancelFullscreen')}` }}</q-tooltip>
+            <q-tooltip>{{ !$q.fullscreen.isActive ? `${$i18n.t('tip.fullscreen')}` : `${$i18n.t('tip.cancelFullscreen')}` }}</q-tooltip>
           </q-btn>
           <q-separator dark vertical />
           <q-btn-dropdown stretch flat align="center" icon="font_download">
@@ -43,13 +43,13 @@
             <q-list>
               <q-item clickable v-close-popup @click="toProfile">
                 <q-item-section>
-                  <q-item-label>{{ $t('layouts.profile') }}</q-item-label>
+                  <q-item-label>{{ $i18n.t('layouts.profile') }}</q-item-label>
                 </q-item-section>
               </q-item>
               <q-separator inset spaced />
               <q-item clickable v-close-popup @click="logOut">
                 <q-item-section>
-                  <q-item-label>{{ $t('layouts.logout') }}</q-item-label>
+                  <q-item-label>{{ $i18n.t('layouts.logout') }}</q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>
@@ -79,7 +79,7 @@
               tag="div"
               v-ripple
             >
-              <span>{{ $t(`routes.${tag.meta.title}`) }}</span>
+              <span>{{ $i18n.t(`routes.${tag.meta.title}`) }}</span>
               <q-icon name="close" right @click.prevent="closeTag(tag)"></q-icon>
               <q-menu touch-position context-menu>
                 <q-list dense>
@@ -129,7 +129,7 @@ export default defineComponent({
     const $q = useQuasar()
     const route = useRoute()
     const router = useRouter()
-    const {t:$t} = useI18n()
+    const $i18 = useI18n()
     const username = computed(() => UserModule.username)
     const avatar = computed(() => UserModule.avatar)
     const lang = computed(() => AppModule.language)
@@ -211,7 +211,7 @@ export default defineComponent({
     const toProfile = () => {
       router.push({ path: '/profile/index' });
     }
-    const appLanguages = languages.filter((lang) => ['zh-hans', 'en-us'].includes(lang.isoName));
+    const appLanguages = languages.filter((lang) => ['zh-CN', 'en-US'].includes(lang.isoName));
     const langOptions = ref<{label: string, value: string}[]>([]);
 
     const checkLang =(value: string) =>  {
@@ -226,7 +226,7 @@ export default defineComponent({
             color: 'white',
           },
         ],
-        message: `${$t('messages.success')}`,
+        message: `${$i18.t('messages.success')}`,
       });
     }
 
@@ -303,6 +303,7 @@ export default defineComponent({
       routes,
       refreshPage,
       langOptions,
+      key,
       toHome,
       toProfile,
       setLeftDrawerOpen,
@@ -313,8 +314,6 @@ export default defineComponent({
       addTags,
       closeTag,
       isActive,
-      $t,
-      // $q
     }
   }
 })

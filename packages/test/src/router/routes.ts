@@ -1,22 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Index.vue') }],
-  },
-
-  // Always leave this as last one,
-  // but you can also remove it
-  {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/Error404.vue'),
-  },
-];
-
-export default routes;
-
 
 
 
@@ -82,21 +65,21 @@ export const constantRoutes: RouteRecordRaw[] = [
       },
     ],
   },
-//   {
-//     path: '/account',
-//     component: Layout,
-//     children: [
-//       {
-//         path: 'index',
-//         name: 'Account',
-//         meta: {
-//           title: 'account',
-//           icon: 'people',
-//         },
-//         component: () => import(/* webpackChunkName: "account" */ 'pages/account/index.vue'),
-//       },
-//     ],
-//   },
+  {
+    path: '/account',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Account',
+        meta: {
+          title: 'account',
+          icon: 'people',
+        },
+        component: () => import(/* webpackChunkName: "account" */ 'pages/account/index.vue'),
+      },
+    ],
+  },
 //   {
 //     path: '/charts',
 //     component: Layout,
