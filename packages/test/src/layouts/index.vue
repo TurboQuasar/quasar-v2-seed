@@ -122,6 +122,7 @@ import {useQuasar} from 'quasar';
 import {useI18n} from 'vue-i18n';
 import {useRefs} from 'src/hooks/useRefs';
 import pkg from '../../package.json'
+import {cloneDeep, delay} from 'lodash'
 export default defineComponent({
   name: 'Layouts',
   components: {
@@ -174,10 +175,9 @@ export default defineComponent({
       breadcrumbs.value = matched.filter((item) => {
         return item.meta && item.meta.title && item.meta.breadcrumb !== false;
       });
-      console.log('breadcrumbs---->', breadcrumbs);
     }
     const addTags = ()=> {
-      TagsViewModule.addView($route);
+      TagsViewModule.addView(cloneDeep($route));
     }
     const [tagRefs, setTagRef] = useRefs()
 
@@ -198,12 +198,13 @@ export default defineComponent({
     }
 
 
-    watch($route, () => {
-      setTimeout(() => {
-        addTags();
-        // moveToCurrentTag();
-        getBreadcrumb();
+    watch(computed(() => $route.path), () => {
+      delay(() => {
+          addTags();
+          // moveToCurrentTag();
+          getBreadcrumb();
       }, 100)
+      console.log(111)
     }, {immediate: true});
 
     const toHome = ()=> {

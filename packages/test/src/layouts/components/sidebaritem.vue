@@ -91,8 +91,8 @@ export default defineComponent({
 })
 </script>
 
-<style  lang="scss" scoped>
-.sidebar-item {
+<style  lang="scss">
+.sidebar-item{
   .q-list {
     .active-tab::after {
       content: '';

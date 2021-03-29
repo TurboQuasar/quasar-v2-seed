@@ -4,7 +4,7 @@ import { getToken, setToken, removeToken, setUsername, removeUsername, getUserna
 import { resetRouter } from 'src/router';
 import {store} from 'src/store';
 import { getUserInfo, login } from 'src/api/user';
-
+import { uid } from 'quasar'
 export interface IUserState {
   token: string;
   username: string;
@@ -75,9 +75,10 @@ class User extends VuexModule implements IUserState {
   public async Login(data: any) {
     const { username, password } = data;
     await login({ username, password });
-    setToken('1');
+    const token = uid();
+    setToken(token);
     setUsername(username);
-    this.SET_TOKEN('1');
+    this.SET_TOKEN(token);
     this.SET_USERNAME(username);
     this.SET_ROLEID('1');
   }
