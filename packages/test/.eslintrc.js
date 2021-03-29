@@ -93,6 +93,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any':'off',
     '@typescript-eslint/restrict-plus-operands':'off',
     '@typescript-eslint/await-thenable':'off',
+    '@typescript-eslint/no-empty-function':'off',
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'

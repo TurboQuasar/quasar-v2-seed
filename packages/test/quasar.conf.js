@@ -84,7 +84,7 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       https: false,
       port: 8080,
-      open: true, // opens browser window automatically
+      open: false, // opens browser window automatically
       proxy: {
         // proxy all requests starting with /api to jsonplaceholder
         '/api': {
@@ -112,7 +112,7 @@ module.exports = configure(function (/* ctx */) {
         },
       },
 
-      // lang: 'en-US', // Quasar language pack
+      lang: 'en-US', // Quasar language pack
 
       // For special cases outside of where the auto-import stategy can have an impact
       // Possible values for "importStrategy":

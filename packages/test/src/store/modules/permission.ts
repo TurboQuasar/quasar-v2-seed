@@ -66,7 +66,7 @@ class Permission extends VuexModule implements IPermissionState {
     if (settings.adminName.includes(UserModule.username)) {
       pagePermissionId.push('-1');
     }
-    let accessedRoutes: RouteRecordRaw[] = [];
+    let accessedRoutes: RouteRecordRaw[];
     accessedRoutes = filterAsyncRoutes(asyncRoutes, pagePermissionId);
     accessedRoutes = filterAsyncRoutesEdit(accessedRoutes, pageEditPermission, pagePermissionId);
     this.routes = constantRoutes.concat(accessedRoutes);

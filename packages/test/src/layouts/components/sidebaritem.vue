@@ -74,16 +74,15 @@ export default defineComponent({
     const iconName = (route)=> {
       return !route.children || (route.children.length === 1 && route.meta && route.meta.icon) ? route.meta.icon : route.children[0].meta.icon;
     }
-    const {t} = useI18n()
+    const $i18n = useI18n()
     const label = (route)=> {
       return !route.children || (route.children.length === 1 && route.meta && route.meta.icon)
-        ? t(`routes.${route.meta.title}`)
-        : t(`routes.${route.children[0].meta.title}`);
+        ? $i18n.t(`routes.${route.meta.title}`)
+        : $i18n.t(`routes.${route.children[0].meta.title}`);
     }
     return {
       opened,
       visible,
-      $route,
       label,
       resolvePath,
       iconName

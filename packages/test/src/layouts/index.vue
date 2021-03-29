@@ -7,17 +7,17 @@
           <q-btn dense flat round :icon="drawerLeft ? 'menu_open' : 'menu'" @click="setLeftDrawerOpen" />
           <q-toolbar-title class="row a-center">
             <q-breadcrumbs active-color="white" separator-color="white" class="fs-14 h-16" :key="+new Date()">
-              <q-breadcrumbs-el :label="$i18n.t(`routes.${route.meta.title}`)" :name="curRouteFather" v-for="(route, index) in breadcrumbs" :key="index" />
+              <q-breadcrumbs-el :label="$t(`routes.${route.meta.title}`)" :name="curRouteFather" v-for="(route, index) in breadcrumbs" :key="index" />
             </q-breadcrumbs>
           </q-toolbar-title>
-          <q-btn-dropdown stretch flat align="center" label="v0.0.0.1"></q-btn-dropdown>
+          <q-btn-dropdown stretch flat align="center" :label="version"></q-btn-dropdown>
           <q-separator dark vertical />
           <q-btn stretch flat icon="refresh" @click="refreshCurPage">
-            <q-tooltip>{{ $i18n.t('tip.refreshCurPage') }}</q-tooltip>
+            <q-tooltip>{{ $t('tip.refreshCurPage') }}</q-tooltip>
           </q-btn>
           <q-separator dark vertical />
           <q-btn stretch flat @click="$q.fullscreen.toggle()" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'">
-            <q-tooltip>{{ !$q.fullscreen.isActive ? `${$i18n.t('tip.fullscreen')}` : `${$i18n.t('tip.cancelFullscreen')}` }}</q-tooltip>
+            <q-tooltip>{{ !$q.fullscreen.isActive ? `${$t('tip.fullscreen')}` : `${$t('tip.cancelFullscreen')}` }}</q-tooltip>
           </q-btn>
           <q-separator dark vertical />
           <q-btn-dropdown stretch flat align="center" icon="font_download">
@@ -43,13 +43,13 @@
             <q-list>
               <q-item clickable v-close-popup @click="toProfile">
                 <q-item-section>
-                  <q-item-label>{{ $i18n.t('layouts.profile') }}</q-item-label>
+                  <q-item-label>{{ $t('layouts.profile') }}</q-item-label>
                 </q-item-section>
               </q-item>
               <q-separator inset spaced />
               <q-item clickable v-close-popup @click="logOut">
                 <q-item-section>
-                  <q-item-label>{{ $i18n.t('layouts.logout') }}</q-item-label>
+                  <q-item-label>{{ $t('layouts.logout') }}</q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>
@@ -73,13 +73,13 @@
             <router-link
               v-for="(tag, index) in visitedViews"
               :key="index"
-              ref="tag"
+              :ref="setTagRef(index)"
               :class="['bg-white p-l-10  b-radius-4 flex row relative border h-30 lh-30 p-r-20', isActive(tag) ? 'text-light-blue  p-r-10' : '']"
               :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
               tag="div"
               v-ripple
             >
-              <span>{{ $i18n.t(`routes.${tag.meta.title}`) }}</span>
+              <span>{{ $t(`routes.${tag.meta.title}`) }}</span>
               <q-icon name="close" right @click.prevent="closeTag(tag)"></q-icon>
               <q-menu touch-position context-menu>
                 <q-list dense>
@@ -117,9 +117,11 @@ import { PermissionModule } from 'src/store/modules/permission';
 import { TagsViewModule, ITagView } from 'src/store/modules/tags';
 import { RouteRecord, useRoute, useRouter,RouteLocationMatched } from 'vue-router';
 import languages from 'quasar/lang/index.json';
-import {watch, computed, ref, nextTick, onMounted, defineComponent} from 'vue'
+import {watch, computed, ref, nextTick, onMounted, defineComponent , reactive, onBeforeUpdate, onUpdated, unref, toRaw} from 'vue'
 import {useQuasar} from 'quasar';
 import {useI18n} from 'vue-i18n';
+import {useRefs} from 'src/hooks/useRefs';
+import pkg from '../../package.json'
 export default defineComponent({
   name: 'Layouts',
   components: {
@@ -127,16 +129,16 @@ export default defineComponent({
   },
   setup(props, context) {
     const $q = useQuasar()
-    const route = useRoute()
-    const router = useRouter()
+    const $route = useRoute()
+    const $router = useRouter()
     const $i18 = useI18n()
     const username = computed(() => UserModule.username)
     const avatar = computed(() => UserModule.avatar)
     const lang = computed(() => AppModule.language)
     const routes = computed(() => PermissionModule.routes)
-    const key = computed(() => route.path)
-    const curRouteFather = computed(() => route.matched[0])
-    const visitedViews = computed(() => TagsViewModule.visitedViews)
+    const key = computed(() => $route.path)
+    const curRouteFather = computed(() => $route.matched[0])
+    const visitedViews = computed(()=>TagsViewModule.visitedViews)
     const refreshPage = computed(() => AppModule.refreshPage)
     const drawerLeft = ref(true)
     const visible = ref(false)
@@ -159,12 +161,12 @@ export default defineComponent({
     }
 
     const isActive = (r: ITagView)=> {
-      return r.path === route.path;
+      return r.path === $route.path;
     }
 
 
     const getBreadcrumb =()=> {
-      let matched = route.matched.filter((item) => item.meta && item.meta.title);
+      let matched = $route.matched.filter((item) => item.meta && item.meta.title);
       const first = matched[0];
       if (!isDashboard(first)) {
         matched = [{ path: '/', meta: { title: 'dashboard' } } as any].concat(matched);
@@ -172,21 +174,21 @@ export default defineComponent({
       breadcrumbs.value = matched.filter((item) => {
         return item.meta && item.meta.title && item.meta.breadcrumb !== false;
       });
+      console.log('breadcrumbs---->', breadcrumbs);
     }
     const addTags = ()=> {
-      TagsViewModule.addView(route);
+      TagsViewModule.addView($route);
     }
+    const [tagRefs, setTagRef] = useRefs()
 
     const moveToCurrentTag =() =>{
       nextTick(() => {
-        // const tags = context.$refs.tag as any[];
-        const tags: any[] = [];
-        if (tags) {
-          for (const tag of tags) {
-            if ((tag.to as ITagView).path === route.path) {
+        if (tagRefs) {
+          for (const tag of tagRefs.value) {
+            if ((tag.to as ITagView).path === $route.path) {
               // When query is different then update
-              if ((tag.to as ITagView).fullPath !== route.fullPath) {
-                TagsViewModule.updateVisitedView(route);
+              if ((tag.to as ITagView).fullPath !== $route.fullPath) {
+                TagsViewModule.updateVisitedView($route);
               }
               break;
             }
@@ -196,20 +198,22 @@ export default defineComponent({
     }
 
 
-    watch(route, () => {
-      addTags();
-      moveToCurrentTag();
-      getBreadcrumb();
+    watch($route, () => {
+      setTimeout(() => {
+        addTags();
+        // moveToCurrentTag();
+        getBreadcrumb();
+      }, 100)
     }, {immediate: true});
 
     const toHome = ()=> {
-      if (route.name === 'Dashboard') {
+      if ($route.name === 'Dashboard') {
         return;
       }
-      router.push({ path: '/' });
+      $router.push({ path: '/' });
     }
     const toProfile = () => {
-      router.push({ path: '/profile/index' });
+      $router.push({ path: '/profile/index' });
     }
     const appLanguages = languages.filter((lang) => ['zh-CN', 'en-US'].includes(lang.isoName));
     const langOptions = ref<{label: string, value: string}[]>([]);
@@ -232,7 +236,7 @@ export default defineComponent({
 
     const logOut = async () => {
       await UserModule.LogOut();
-      await router.push(`/login?redirect=${route.fullPath}`);
+      await $router.push(`/login?redirect=${$route.fullPath}`);
       $q.notify({
         color: 'primary',
         multiLine: true,
@@ -253,7 +257,7 @@ export default defineComponent({
 
     const closeAll = ()=> {
       TagsViewModule.delAllViews();
-      router.push('/').catch((err) => 0);
+      $router.push('/').catch((err) => 0);
     }
 
     onMounted(() => {
@@ -267,15 +271,15 @@ export default defineComponent({
       await AppModule.refreshCurPage();
     }
 
-    const closeTag = (view: ITagView)=> {
+    const closeTag = async (view: ITagView) => {
       if (visitedViews.value.length > 1) {
-        let last = visitedViews.value[visitedViews.value.length - 1];
-        if (route.fullPath === view.fullPath) {
+        let last;
+        if ($route.fullPath === view.fullPath) {
           // 如果删除的是当前路由，那么就删除当前路由并跳转到最后一个
           TagsViewModule.delView(view);
           // 重新获取下左后一个
           last = visitedViews.value[visitedViews.value.length - 1];
-          router.push({ path: last.fullPath as string});
+          await $router.push({path: last.fullPath as string});
         } else {
           // 如果删除不是当前路由，删了自己就好
           TagsViewModule.delView(view);
@@ -285,8 +289,9 @@ export default defineComponent({
         closeAll();
       }
     }
-
+    const version = pkg.version
     return {
+      version,
       username,
       avatar,
       lang,
@@ -314,6 +319,7 @@ export default defineComponent({
       addTags,
       closeTag,
       isActive,
+      setTagRef
     }
   }
 })

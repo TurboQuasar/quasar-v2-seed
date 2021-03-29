@@ -1,5 +1,5 @@
 import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-decorators';
-import { RouteLocationNormalizedLoaded } from 'vue-router';
+import  { RouteLocationNormalizedLoaded } from 'vue-router';
 import {store} from 'src/store';
 
 export interface ITagView extends Partial<RouteLocationNormalizedLoaded> {
@@ -22,8 +22,7 @@ class TagsView extends VuexModule implements ITagsViewState {
       this.visitedViews.some((v) => {
         return v.path === view.path;
       })
-    )
-      return;
+    ) return;
     this.visitedViews.push(
       Object.assign({}, view, {
         title: view.meta?.title || 'no-name',
@@ -36,16 +35,19 @@ class TagsView extends VuexModule implements ITagsViewState {
     // keep affix tags
     const affixTags = this.visitedViews.filter((tag) => tag.meta?.affix);
     this.visitedViews = affixTags;
+    console.log(this.visitedViews)
   }
 
   @Mutation
   private UPDATE_VISITED_VIEW(view: ITagView) {
-    for (let v of this.visitedViews) {
+    for (const [i,v] of this.visitedViews.entries()) {
       if (v.path === view.path) {
-        v = Object.assign(v, view);
+        // v = Object.assign(v, view);
+        this.visitedViews[i] = view
         break;
       }
     }
+    console.log(this.visitedViews)
   }
   @Mutation
   private DEL_VISITED_VIEW(view: ITagView) {
@@ -54,6 +56,11 @@ class TagsView extends VuexModule implements ITagsViewState {
         this.visitedViews.splice(i, 1);
       }
     }
+  }
+
+  @Mutation
+  private UPDATE_ALL(views: ITagView[]) {
+    this.visitedViews = views
   }
 
   @Action
@@ -73,6 +80,11 @@ class TagsView extends VuexModule implements ITagsViewState {
   @Action
   public updateVisitedView(view: ITagView) {
     this.UPDATE_VISITED_VIEW(view);
+  }
+
+  @Action
+  public updateAll(views: ITagView[]) {
+    this.UPDATE_ALL(views)
   }
 }
 export const TagsViewModule = getModule(TagsView);

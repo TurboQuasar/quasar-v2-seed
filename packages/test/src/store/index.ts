@@ -1,5 +1,5 @@
 import { store as s } from 'quasar/wrappers';
-import { createStore, Store } from 'vuex';
+import { createStore, Store, createLogger } from 'vuex';
 
 // import example from './module-example'
 // import { ExampleStateInterface } from './module-example/state';
@@ -24,10 +24,10 @@ const store = createStore<StateInterface>({
   modules: {
     // example
   },
-
+  plugins: [createLogger()],
   // enable strict mode (adds overhead!)
   // for dev mode and --debug builds only
-  strict: !!process.env.DEBUGGING,
+  strict: false //!!process.env.DEBUGGING,
 });
 // store = Store
 export default s(function (/* { ssrContext } */) {
