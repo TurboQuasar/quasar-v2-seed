@@ -365,37 +365,37 @@ export const constantRoutes: RouteRecordRaw[] = [
  * 需要根据用户角色动态加载的路由
  */
 export const asyncRoutes: RouteRecordRaw[] = [
-  // {
-  //   path: '/auth',
-  //   component: Layout,
-  //   meta: {
-  //     title: 'auth',
-  //     icon: 'remove_from_queue',
-  //     pagePermissionId: ['-1', '1', '2'],
-  //     opened: false,
-  //   },
-  //   children: [
-  //     {
-  //       path: 'a',
-  //       name: 'AuthA',
-  //       meta: {
-  //         title: 'authA',
-  //         icon: 'block',
-  //         pagePermissionId: ['-1', '1'],
-  //       },
-  //       component: () => import(/* webpackChunkName: "authA" */ 'pages/auth/a.vue'),
-  //     },
-  //     {
-  //       path: 'b',
-  //       name: 'AuthB',
-  //       meta: {
-  //         title: 'authB',
-  //         icon: 'assignment',
-  //         pagePermissionId: ['-1', '2'],
-  //       },
-  //       component: () => import(/* webpackChunkName: "authB" */ 'pages/auth/b.vue'),
-  //     },
-  //   ],
-  // },
+  {
+    path: '/auth',
+    component: Layout,
+    meta: {
+      title: 'auth',
+      icon: 'remove_from_queue',
+      pagePermissionId: ['-1', '1', '2'],
+      opened: false,
+    },
+    children: [
+      {
+        path: 'a',
+        name: 'AuthA',
+        meta: {
+          title: 'authA',
+          icon: 'block',
+          pagePermissionId: ['-1', '1'],
+        },
+        component: () => import(/* webpackChunkName: "authA" */ 'pages/auth/a.vue'),
+      },
+      {
+        path: 'b',
+        name: 'AuthB',
+        meta: {
+          title: 'authB',
+          icon: 'assignment',
+          pagePermissionId: ['-1', '2'],
+        },
+        component: () => import(/* webpackChunkName: "authB" */ 'pages/auth/b.vue'),
+      },
+    ],
+  },
 ];
 

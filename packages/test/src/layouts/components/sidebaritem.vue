@@ -12,17 +12,15 @@
       ></q-expansion-item>
     </q-list>
     <q-list class="q-list" v-else>
-      <template>
-        <q-expansion-item
-          :icon="route.meta.icon"
-          :content-inset-level="1"
-          :label="$t(`routes.${route.meta.title}`)"
-          v-model="opened"
-          :ref="route.meta.title"
-        >
-          <Sidebaritem v-for="(item, index) in route.children" :route="item" :key="index" :basePath="route.path" />
-        </q-expansion-item>
-      </template>
+      <q-expansion-item
+        :icon="route.meta.icon"
+        :content-inset-level="1"
+        :label="$t(`routes.${route.meta.title}`)"
+        v-model="opened"
+        :ref="route.meta.title"
+      >
+        <Sidebaritem v-for="(item, index) in route.children" :route="item" :key="index" :basePath="route.path" />
+      </q-expansion-item>
     </q-list>
   </div>
 </template>
