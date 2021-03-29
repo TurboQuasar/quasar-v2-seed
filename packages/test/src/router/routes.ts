@@ -304,25 +304,25 @@ export const constantRoutes: RouteRecordRaw[] = [
       },
     ],
   },
-//   {
-//     path: '/table',
-//     component: Layout,
-//     meta: {
-//       title: 'table',
-//       icon: 'table_chart',
-//     },
-//     children: [
-//       {
-//         path: 'index',
-//         name: 'Table',
-//         meta: {
-//           title: 'table',
-//           icon: 'table_chart',
-//         },
-//         component: () => import(/* webpackChunkName: "tableA" */ 'pages/table/index.vue'),
-//       },
-//     ],
-//   },
+  {
+    path: '/table',
+    component: Layout,
+    meta: {
+      title: 'table',
+      icon: 'table_chart',
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'Table',
+        meta: {
+          title: 'table',
+          icon: 'table_chart',
+        },
+        component: () => import(/* webpackChunkName: "tableA" */ 'pages/table/index.vue'),
+      },
+    ],
+  },
 //   {
 //     path: '/convert',
 //     component: Layout,
