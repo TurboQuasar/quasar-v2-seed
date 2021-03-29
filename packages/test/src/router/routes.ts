@@ -341,24 +341,24 @@ export const constantRoutes: RouteRecordRaw[] = [
 //       },
 //     ],
 //   },
-//   {
-//     path: '/profile',
-//     component: Layout,
-//     meta: {
-//       hidden: true,
-//     },
-//     children: [
-//       {
-//         path: 'index',
-//         name: 'Profile',
-//         meta: {
-//           title: 'profile',
-//           icon: 'accessibility',
-//         },
-//         component: () => import(/* webpackChunkName: "profile" */ 'pages/profile/index.vue'),
-//       },
-//     ],
-//   },
+  {
+    path: '/profile',
+    component: Layout,
+    meta: {
+      hidden: true,
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'Profile',
+        meta: {
+          title: 'profile',
+          icon: 'accessibility',
+        },
+        component: () => import(/* webpackChunkName: "profile" */ 'pages/profile/index.vue'),
+      },
+    ],
+  },
 ];
 /**
  * 有权限限制

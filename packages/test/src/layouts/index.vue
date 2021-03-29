@@ -37,7 +37,7 @@
           <q-btn-dropdown stretch flat align="center">
             <template v-slot:label>
               <q-avatar class="m-r-10">
-                <img src="~assets/avatar2.jpg" />
+                <img :src="avatar" />
               </q-avatar>
             </template>
             <q-list>
