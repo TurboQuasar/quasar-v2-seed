@@ -259,21 +259,21 @@ export const constantRoutes: RouteRecordRaw[] = [
 //       },
 //     ],
 //   },
-//   {
-//     path: '/copy',
-//     component: Layout,
-//     children: [
-//       {
-//         path: 'index',
-//         name: 'Copy',
-//         meta: {
-//           title: 'copy',
-//           icon: 'content_cut',
-//         },
-//         component: () => import(/* webpackChunkName: "copy" */ 'pages/copy/index.vue'),
-//       },
-//     ],
-//   },
+  {
+    path: '/copy',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Copy',
+        meta: {
+          title: 'copy',
+          icon: 'content_cut',
+        },
+        component: () => import(/* webpackChunkName: "copy" */ 'pages/copy/index.vue'),
+      },
+    ],
+  },
 //   {
 //     path: '/i18n',
 //     component: Layout,
@@ -289,21 +289,21 @@ export const constantRoutes: RouteRecordRaw[] = [
 //       },
 //     ],
 //   },
-//   {
-//     path: '/icon',
-//     component: Layout,
-//     children: [
-//       {
-//         path: 'index',
-//         name: 'Icon',
-//         meta: {
-//           title: 'icon',
-//           icon: 'face',
-//         },
-//         component: () => import(/* webpackChunkName: "icon" */ 'pages/icon/index.vue'),
-//       },
-//     ],
-//   },
+  {
+    path: '/icon',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Icon',
+        meta: {
+          title: 'icon',
+          icon: 'face',
+        },
+        component: () => import(/* webpackChunkName: "icon" */ 'pages/icon/index.vue'),
+      },
+    ],
+  },
 //   {
 //     path: '/table',
 //     component: Layout,

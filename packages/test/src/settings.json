@@ -1,5 +1,5 @@
 {
-  "policy": "https://github.com/TurboQuasar/quasar-typescript-admin-template/tree/master-gxk inspired by hejian",
+  "policy": "https://github.com/TurboQuasar/quasar-v2-seed",
   "title": "Quasar admin",
   "errorLog": ["production"],
   "logUrl": "/",
