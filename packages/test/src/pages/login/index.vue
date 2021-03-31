@@ -48,8 +48,8 @@ export default defineComponent( {
     let redirect: string
     let otherQuery;
 
-    const route = useRoute()
-    const router = useRouter()
+    const $route = useRoute()
+    const $router = useRouter()
     const $q = useQuasar()
     const $i18n = useI18n()
     const getOtherQuery = (query)=> {
@@ -65,9 +65,9 @@ export default defineComponent( {
       setTimeout(async () => {
         await UserModule.Login({ username: username.value, password: password.value });
         if (!redirect) {
-          await router.push('/dashboard');
+          await $router.push('/dashboard');
         } else {
-          await router.push(
+          await $router.push(
             {path: redirect || '/dashboard'},
           );
         }
@@ -89,9 +89,9 @@ export default defineComponent( {
       }, 1000);
     }
 
-    watch(route, (val) => {
+    watch(computed(() => $route.path), () => {
       // See https://github.com/vuejs/vue-router/pull/2050 for details
-      const query = val.query;
+      const query = $route.query;
       if (query) {
         redirect = query.redirect as string;
         otherQuery = getOtherQuery(query);

@@ -30,7 +30,7 @@ import Sidebaritem from './sidebaritem.vue';
 import path from 'path';
 import {RouteLocationNormalizedLoaded}  from 'vue-router'
 import {useRoute} from 'vue-router'
-import {watch, nextTick, ref, PropType, defineComponent} from 'vue'
+import {watch, nextTick, ref, PropType, defineComponent, computed} from 'vue'
 import {propTypes} from 'src/utils/propTypes';
 import {useI18n} from 'vue-i18n';
 
@@ -50,9 +50,9 @@ export default defineComponent({
   },
   setup(props)  {
     const $route = useRoute()
-    watch($route, (newVal) => {
+    watch(computed(() => $route.path), () => {
       nextTick(() => {
-        const father = newVal.matched[0];
+        const father = $route.matched[0];
         const title = father.meta.title;
         if (father.meta && title) {
           opened.value = true;

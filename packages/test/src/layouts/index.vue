@@ -117,7 +117,7 @@ import { PermissionModule } from 'src/store/modules/permission';
 import { TagsViewModule, ITagView } from 'src/store/modules/tags';
 import { RouteRecord, useRoute, useRouter,RouteLocationMatched } from 'vue-router';
 import languages from 'quasar/lang/index.json';
-import {watch, computed, ref, nextTick, onMounted, defineComponent , reactive, onBeforeUpdate, onUpdated, unref, toRaw} from 'vue'
+import {watch, watchEffect, computed, ref, nextTick, onMounted, defineComponent , reactive, onBeforeUpdate, onUpdated, unref, toRaw} from 'vue'
 import {useQuasar} from 'quasar';
 import {useI18n} from 'vue-i18n';
 import {useRefs} from 'src/hooks/useRefs';
@@ -196,15 +196,13 @@ export default defineComponent({
         }
       });
     }
-
-
     watch(computed(() => $route.path), () => {
-      delay(() => {
-          addTags();
-          // moveToCurrentTag();
-          getBreadcrumb();
-      }, 100)
-      console.log(111)
+
+      nextTick(() => {
+        addTags();
+        // moveToCurrentTag();
+        getBreadcrumb();
+      })
     }, {immediate: true});
 
     const toHome = ()=> {

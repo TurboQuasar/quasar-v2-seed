@@ -151,6 +151,7 @@
                 <q-td key="calcium" :props="props">{{ props.row.calcium }}</q-td>
                 <q-td key="iron" :props="props">{{ props.row.iron }}</q-td>
                 <q-td key="option" class="text-right row a-center j-end">
+                  <!--todo-->
                   <span class="link-type">details</span>
                   <span class="delete-type m-l-10">delete</span>
                 </q-td>
