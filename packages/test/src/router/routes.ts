@@ -176,15 +176,15 @@ export const constantRoutes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "sticky" */ 'pages/components/sticky.vue'),
       },
-//       {
-//         path: 'dialog',
-//         name: 'Dialog',
-//         meta: {
-//           title: 'dialog',
-//           icon: 'developer_board',
-//         },
-//         component: () => import(/* webpackChunkName: "dialog" */ 'pages/components/dialog.vue'),
-//       },
+      {
+        path: 'dialog',
+        name: 'Dialog',
+        meta: {
+          title: 'dialog',
+          icon: 'developer_board',
+        },
+        component: () => import(/* webpackChunkName: "dialog" */ 'pages/components/dialog.vue'),
+      },
 //       {
 //         path: 'carousel',
 //         name: 'Carousel',
