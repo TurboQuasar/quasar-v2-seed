@@ -177,7 +177,7 @@ export default defineComponent({
       });
     }
     const addTags = ()=> {
-      TagsViewModule.addView(cloneDeep($route));
+      TagsViewModule.addView($route);
     }
     const [tagRefs, setTagRef] = useRefs()
 

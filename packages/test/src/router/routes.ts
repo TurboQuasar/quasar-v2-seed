@@ -10,7 +10,7 @@ import Layout from 'src/layouts/index.vue';
                                  detail see : https://vuejs.org/v2/guide/components-dynamic-async.html#keep-alive-with-Dynamic-Components
   redirect:
   meta: {
-    pagePermissionId              页面权限的id, -1就是管理员才有的权限
+    pagePermissionId              页面权限的id, -1就是管理员才有的权限, 1读权限, 2编辑权限
     modify                        是否可编辑
     title: 'title'               子菜单和面包屑中显示的名称（推荐设置）
     icon: 'svg-name'             侧栏中显示的图标
@@ -117,11 +117,11 @@ export const constantRoutes: RouteRecordRaw[] = [
 //       },
 //     ],
 //   },
-//   {
-//     path: '/components',
-//     component: Layout,
-//     meta: { title: 'components', icon: 'extension' },
-//     children: [
+  {
+    path: '/components',
+    component: Layout,
+    meta: { title: 'components', icon: 'extension' },
+    children: [
 //       {
 //         path: 'editer',
 //         name: 'Editer',
@@ -167,15 +167,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 //         },
 //         component: () => import(/* webpackChunkName: "tabs" */ 'pages/components/tabs.vue'),
 //       },
-//       {
-//         path: 'sticky',
-//         name: 'Sticky',
-//         meta: {
-//           title: 'sticky',
-//           icon: 'assistant_photo',
-//         },
-//         component: () => import(/* webpackChunkName: "sticky" */ 'pages/components/sticky.vue'),
-//       },
+      {
+        path: 'sticky',
+        name: 'Sticky',
+        meta: {
+          title: 'sticky',
+          icon: 'assistant_photo',
+        },
+        component: () => import(/* webpackChunkName: "sticky" */ 'pages/components/sticky.vue'),
+      },
 //       {
 //         path: 'dialog',
 //         name: 'Dialog',
@@ -257,8 +257,8 @@ export const constantRoutes: RouteRecordRaw[] = [
 //         },
 //         component: () => import(/* webpackChunkName: "notice" */ 'pages/components/color.vue'),
 //       },
-//     ],
-//   },
+    ],
+  },
   {
     path: '/copy',
     component: Layout,

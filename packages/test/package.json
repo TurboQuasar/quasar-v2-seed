@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "start": "quasar dev"
+    "start": "quasar dev",
+    "build": "quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -28,6 +29,7 @@
     "vuex-module-decorators": "^1.0.1"
   },
   "devDependencies": {
+    "@intlify/vue-i18n-loader": "^2.0.3",
     "@quasar/app": "^3.0.0-beta.1",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^10.17.15",
@@ -36,7 +38,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "push-dir": "^0.4.1"
   },
   "browserslist": [
     "last 10 Chrome versions",

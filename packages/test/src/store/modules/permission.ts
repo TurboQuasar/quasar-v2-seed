@@ -4,6 +4,7 @@ import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-dec
 import { RouteRecordRaw } from 'vue-router';
 import { asyncRoutes, constantRoutes } from 'src/router/routes';
 import {store} from 'src/store';
+import {shallowRef} from 'vue'
 const hasPermission = (pagePermissionId: string[], asyncRoute: RouteRecordRaw) => {
   if (asyncRoute.meta && asyncRoute.meta.pagePermissionId) {
     return pagePermissionId.includes('-1')
