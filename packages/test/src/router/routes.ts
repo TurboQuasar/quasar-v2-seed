@@ -198,24 +198,24 @@ export const constantRoutes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "colorPicker" */ 'pages/components/colorPicker.vue'),
       },
-//       {
-//         path: 'skeleton',
-//         name: 'Skeleton',
-//         meta: {
-//           title: 'skeleton',
-//           icon: 'assignment_returned',
-//         },
-//         component: () => import(/* webpackChunkName: "skeleton" */ 'pages/components/skeleton.vue'),
-//       },
-//       {
-//         path: 'spinners',
-//         name: 'Spinners',
-//         meta: {
-//           title: 'spinners',
-//           icon: 'blur_linear',
-//         },
-//         component: () => import(/* webpackChunkName: "spinners" */ 'pages/components/spinners.vue'),
-//       },
+      {
+        path: 'skeleton',
+        name: 'Skeleton',
+        meta: {
+          title: 'skeleton',
+          icon: 'assignment_returned',
+        },
+        component: () => import(/* webpackChunkName: "skeleton" */ 'pages/components/skeleton.vue'),
+      },
+      {
+        path: 'spinners',
+        name: 'Spinners',
+        meta: {
+          title: 'spinners',
+          icon: 'blur_linear',
+        },
+        component: () => import(/* webpackChunkName: "spinners" */ 'pages/components/spinners.vue'),
+      },
       {
         path: 'notice',
         name: 'Notice',
