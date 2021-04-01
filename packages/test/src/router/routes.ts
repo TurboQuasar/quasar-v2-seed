@@ -117,15 +117,15 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: Layout,
     meta: { title: 'components', icon: 'extension' },
     children: [
-//       {
-//         path: 'editer',
-//         name: 'Editer',
-//         meta: {
-//           title: 'editer',
-//           icon: 'airline_seat_individual_suite',
-//         },
-//         component: () => import(/* webpackChunkName: "editer" */ 'pages/components/editer.vue'),
-//       },
+      {
+        path: 'editer',
+        name: 'Editer',
+        meta: {
+          title: 'editer',
+          icon: 'airline_seat_individual_suite',
+        },
+        component: () => import(/* webpackChunkName: "editer" */ 'pages/components/editer.vue'),
+      },
 //       {
 //         path: 'md',
 //         name: 'Md',
@@ -216,15 +216,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 //         },
 //         component: () => import(/* webpackChunkName: "spinners" */ 'pages/components/spinners.vue'),
 //       },
-//       {
-//         path: 'notice',
-//         name: 'Notice',
-//         meta: {
-//           title: 'notice',
-//           icon: 'brightness_7',
-//         },
-//         component: () => import(/* webpackChunkName: "notice" */ 'pages/components/notice.vue'),
-//       },
+      {
+        path: 'notice',
+        name: 'Notice',
+        meta: {
+          title: 'notice',
+          icon: 'brightness_7',
+        },
+        component: () => import(/* webpackChunkName: "notice" */ 'pages/components/notice.vue'),
+      },
 //       {
 //         path: 'transfer',
 //         name: 'Transfer',
@@ -234,15 +234,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 //         },
 //         component: () => import(/* webpackChunkName: "notice" */ 'pages/components/transfer.vue'),
 //       },
-//       {
-//         path: 'parallax',
-//         name: 'Parallax',
-//         meta: {
-//           title: 'parallax',
-//           icon: 'remove_red_eye',
-//         },
-//         component: () => import(/* webpackChunkName: "notice" */ 'pages/components/parallax.vue'),
-//       },
+      {
+        path: 'parallax',
+        name: 'Parallax',
+        meta: {
+          title: 'parallax',
+          icon: 'remove_red_eye',
+        },
+        component: () => import(/* webpackChunkName: "notice" */ 'pages/components/parallax.vue'),
+      },
       {
         path: 'colors',
         name: 'Colors',
