@@ -153,15 +153,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 //         },
 //         component: () => import(/* webpackChunkName: "jsonEditor" */ 'pages/components/jsonEditor.vue'),
 //       },
-//       {
-//         path: 'tabs',
-//         name: 'Tabs',
-//         meta: {
-//           title: 'tabs',
-//           icon: 'attach_file',
-//         },
-//         component: () => import(/* webpackChunkName: "tabs" */ 'pages/components/tabs.vue'),
-//       },
+      {
+        path: 'tabs',
+        name: 'Tabs',
+        meta: {
+          title: 'tabs',
+          icon: 'attach_file',
+        },
+        component: () => import(/* webpackChunkName: "tabs" */ 'pages/components/tabs.vue'),
+      },
       {
         path: 'sticky',
         name: 'Sticky',
