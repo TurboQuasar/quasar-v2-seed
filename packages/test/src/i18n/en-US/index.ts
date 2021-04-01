@@ -27,6 +27,7 @@ export default {
     sticky: 'Sticky',
     carousel: 'Carousel',
     colorPicker: 'Color Picker',
+    colors: 'Colors',
     skeleton: 'Skeleton',
     spinners: 'Spinners',
     notice: 'Notice',

@@ -27,6 +27,7 @@ export default {
     sticky: 'Sticky',
     carousel: '跑马灯',
     colorPicker: '颜色选择器',
+    colors: '颜色',
     skeleton: '骨架屏',
     spinners: '加载',
     notice: '提示',

@@ -189,15 +189,15 @@ export const constantRoutes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "carousel" */ 'pages/components/carousel.vue'),
       },
-//       {
-//         path: 'colorPicker',
-//         name: 'ColorPicker',
-//         meta: {
-//           title: 'colorPicker',
-//           icon: 'autorenew',
-//         },
-//         component: () => import(/* webpackChunkName: "colorPicker" */ 'pages/components/colorPicker.vue'),
-//       },
+      {
+        path: 'colorPicker',
+        name: 'ColorPicker',
+        meta: {
+          title: 'colorPicker',
+          icon: 'autorenew',
+        },
+        component: () => import(/* webpackChunkName: "colorPicker" */ 'pages/components/colorPicker.vue'),
+      },
 //       {
 //         path: 'skeleton',
 //         name: 'Skeleton',
@@ -243,15 +243,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 //         },
 //         component: () => import(/* webpackChunkName: "notice" */ 'pages/components/parallax.vue'),
 //       },
-//       {
-//         path: 'colors',
-//         name: 'Colors',
-//         meta: {
-//           title: 'Colors',
-//           icon: 'invert_colors',
-//         },
-//         component: () => import(/* webpackChunkName: "notice" */ 'pages/components/color.vue'),
-//       },
+      {
+        path: 'colors',
+        name: 'Colors',
+        meta: {
+          title: 'colors',
+          icon: 'invert_colors',
+        },
+        component: () => import(/* webpackChunkName: "notice" */ 'pages/components/color.vue'),
+      },
     ],
   },
   {
