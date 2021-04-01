@@ -43,6 +43,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/dashboard',
+    alias: '/',
     component: Layout,
     meta: {},
     redirect: '/dashboard/index',
