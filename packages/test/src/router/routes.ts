@@ -30,14 +30,9 @@ export const constantRoutes: RouteRecordRaw[] = [
 
   // Always leave this as last one,
   // but you can also remove it
-  {
-    path: '/:catchAll(.*)*',
-    // component: () => import('pages/Error404.vue'),
-    redirect: '/dashboard',
-    meta: { hidden: true },
-  },
   // {
-  //   path: '*',
+  //   path: '/:catchAll(.*)*',
+  //   // component: () => import('pages/Error404.vue'),
   //   redirect: '/dashboard',
   //   meta: { hidden: true },
   // },
@@ -185,15 +180,15 @@ export const constantRoutes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "dialog" */ 'pages/components/dialog.vue'),
       },
-//       {
-//         path: 'carousel',
-//         name: 'Carousel',
-//         meta: {
-//           title: 'carousel',
-//           icon: 'burst_mode',
-//         },
-//         component: () => import(/* webpackChunkName: "carousel" */ 'pages/components/carousel.vue'),
-//       },
+      {
+        path: 'carousel',
+        name: 'Carousel',
+        meta: {
+          title: 'carousel',
+          icon: 'burst_mode',
+        },
+        component: () => import(/* webpackChunkName: "carousel" */ 'pages/components/carousel.vue'),
+      },
 //       {
 //         path: 'colorPicker',
 //         name: 'ColorPicker',
