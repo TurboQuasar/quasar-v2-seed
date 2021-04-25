@@ -1,7 +1,7 @@
 {
-  "name": "@project/vue-js-example",
+  "name": "@project/quasar-v2-seed",
   "version": "1.0.0",
-  "description": "This project show you how you can create a project based on Ts.ED + Vue.js as client application. This example can be used to create project based on other popular client frameworks like React or Angular.",
+  "description": "A project based on quasar v2 and vue3",
   "main": "index.js",
   "private": true,
   "scripts": {
