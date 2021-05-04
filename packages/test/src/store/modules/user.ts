@@ -85,8 +85,8 @@ class User extends VuexModule implements IUserState {
   // 获取用户信息
   @Action({ rawError: true })
   public async getUserInfo() {
-    const result = await getUserInfo({ username: this.username });
-    const { avatar, email, introduction, username } = result.data;
+    const {data} = await getUserInfo({ username: this.username });
+    const { avatar, email, introduction, username } = data;
     this.SET_AVATAR(avatar);
     this.SET_EMAIL(email);
     this.SET_INTRODUCTION(introduction);

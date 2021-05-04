@@ -53,8 +53,8 @@ axios.interceptors.request.use(
 // Response interceptors
 axios.interceptors.response.use(
   (response) => {
-    const { data, code } = response.data;
-    if (!data || (data && !data.success)) {
+    const { code, success } = response.data.data;
+    if (!success) {
       const msgText = msg[code] ? msg[code][AppModule.language === 'en' ? 1 : 0] : DEFAULT_ERRORMSG;
       Notify.create({
         message: msgText,
@@ -71,7 +71,7 @@ axios.interceptors.response.use(
       UserModule.SET_LOGIN_LOADING(false);
       return Promise.reject('error');
     }
-    return Promise.resolve(response.data);
+    return Promise.resolve(response.data.data);
   },
   (error: any) => {
     console.info(error);

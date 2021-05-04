@@ -73,7 +73,9 @@ const getUserInfo = ({ username }) => {
 
   let { roles, avatar, introduction, email } = cur;
   return new Promise((resolve, reject) => {
-    resolve({ success: true, roles, avatar, introduction, email });
+    resolve({ success: true, data: {
+        roles, avatar, introduction, email
+      } });
   });
 };
 const logOut = ({ username }) => {

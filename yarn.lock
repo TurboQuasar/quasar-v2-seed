@@ -10750,7 +10750,7 @@ node-releases@^1.1.70:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.71.tgz#cb1334b179896b1c89ecfdd4b725fb7bbdfc7dbb"
   integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
 
-nodemon@^2.0.2:
+nodemon@^2.0.2, nodemon@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-2.0.7.tgz#6f030a0a0ebe3ea1ba2a38f71bf9bab4841ced32"
   integrity sha512-XHzK69Awgnec9UzHr1kc8EomQh4sjTQ8oRf8TsGrSmHDx9/UmiGG9E/mM3BuTfNeFwdNBvrqQq/RHL0xIeyFOA==
@@ -12453,9 +12453,9 @@ qs@~6.5.2:
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 quasar@^2.0.0-beta.1:
-  version "2.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.0.0-beta.11.tgz#78f21abe94caa78fe17ad17ce945d09dfda9e5d2"
-  integrity sha512-YG+iVkd1LNbo0MFSrPl1npEW02FfVeD4+/98nYPz3pfZEdOy1kiOF7N9Ij7RDC8x0/+9Ans9mgBvs0xjg9YxyA==
+  version "2.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.0.0-beta.15.tgz#589e55cffbebc57646dbbf9f2e6748de9a7d4e01"
+  integrity sha512-JQXTkBefxti3pCVwGR4P2JCOAFKx1sS1xSLRwnTKkuoASQh4Z5QOdjSMSFjVPwtVHt/djOSqVs4Y/rXB1gL0+g==
 
 query-string@^4.1.0:
   version "4.3.4"
@@ -12729,6 +12729,11 @@ redent@^2.0.0:
   dependencies:
     indent-string "^3.0.0"
     strip-indent "^2.0.0"
+
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
@@ -14607,6 +14612,13 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typescript-json-serializer@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/typescript-json-serializer/-/typescript-json-serializer-3.3.0.tgz#9950398d79c0b4febbed2f0a7e141ff0f7af2f38"
+  integrity sha512-jfg3+y7kCd7n3rNyBitQLb03a+Z6XQfPPQdLPkpuduV4mA3y0u4AQyizXVsxKvOf30VPhExTkjbZBTIP9Y+FaA==
+  dependencies:
+    reflect-metadata "^0.1.13"
+
 typescript@4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.2.tgz#1450f020618f872db0ea17317d16d8da8ddb8c4c"
@@ -14965,11 +14977,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-vue-count-to@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/vue-count-to/-/vue-count-to-1.0.13.tgz#3e7573ea6e64c2b2972f64e0a2ab2e23c7590ff3"
-  integrity sha512-6R4OVBVNtQTlcbXu6SJ8ENR35M2/CdWt3Jmv57jOUM+1ojiFmjVGvZPH8DfHpMDSA+ITs+EW5V6qthADxeyYOQ==
 
 vue-eslint-parser@^7.6.0:
   version "7.6.0"
