@@ -40,15 +40,15 @@ const router = createRouter({
     process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE
   ),
 });
+export const getPageTitle = (key: string) => {
+  const hasKey = i18n.global.t(`routes.${key}`);
+  if (hasKey) {
+    const pageName = i18n.global.t(`routes.${key}`);
+    return `${pageName} - ${settings.title}`;
+  }
+  return `${settings.title}`;
+};
 export default route<StateInterface>(function (/* { store, ssrContext } */) {
-  const getPageTitle = (key: string) => {
-    const hasKey = i18n.global.t(`routes.${key}`);
-    if (hasKey) {
-      const pageName = i18n.global.t(`routes.${key}`);
-      return `${pageName} - ${settings.title}`;
-    }
-    return `${settings.title}`;
-  };
   const whiteList = ['/login'];
   router.beforeEach(async (to: any, _, next) => {
     const token = getToken();

@@ -119,10 +119,10 @@ import { RouteRecord, useRoute, useRouter,RouteLocationMatched } from 'vue-route
 import languages from 'quasar/lang/index.json';
 import {watch, watchEffect, computed, ref, nextTick, onMounted, defineComponent , reactive, onBeforeUpdate, onUpdated, unref, toRaw} from 'vue'
 import {useQuasar} from 'quasar';
-import {useI18n} from 'vue-i18n';
+import {useI18n} from 'vue-i18n/index';
 import {useRefs} from 'src/hooks/useRefs';
 import pkg from '../../package.json'
-import {cloneDeep, delay} from 'lodash'
+import {getPageTitle} from 'src/router';
 export default defineComponent({
   name: 'Layouts',
   components: {
@@ -219,6 +219,8 @@ export default defineComponent({
 
     const checkLang =(value: string) =>  {
       AppModule.SET_LANGUAGE(value);
+
+      document.title = getPageTitle($route.meta.title);
       $q.notify({
         color: 'primary',
         multiLine: true,

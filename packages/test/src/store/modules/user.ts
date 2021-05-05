@@ -1,10 +1,9 @@
-import axios from 'src/utils/request';
 import { VuexModule, Module, Action, Mutation, getModule } from 'vuex-module-decorators';
 import { getToken, setToken, removeToken, setUsername, removeUsername, getUsername } from 'src/utils/cookies';
 import { resetRouter } from 'src/router';
 import {store} from 'src/store';
-import { getUserInfo, login } from 'src/api/user';
 import { uid } from 'quasar'
+import UserModel from 'src/api/models/user.model';
 export interface IUserState {
   token: string;
   username: string;
@@ -74,7 +73,7 @@ class User extends VuexModule implements IUserState {
   @Action({ rawError: true })
   public async Login(data: any) {
     const { username, password } = data;
-    await login({ username, password });
+    await UserModel.login({ username, password });
     const token = uid();
     setToken(token);
     setUsername(username);
@@ -85,7 +84,7 @@ class User extends VuexModule implements IUserState {
   // 获取用户信息
   @Action({ rawError: true })
   public async getUserInfo() {
-    const {data} = await getUserInfo({ username: this.username });
+    const data = await  UserModel.getUserInfo({ username: this.username });
     const { avatar, email, introduction, username } = data;
     this.SET_AVATAR(avatar);
     this.SET_EMAIL(email);
@@ -107,10 +106,7 @@ class User extends VuexModule implements IUserState {
     if (this.token === '') {
       throw Error('LogOut: token is undefined!');
     }
-    await axios.request({
-      url: '/api/mock-api/v1/user/logout',
-      method: 'post',
-    });
+    await UserModel.logOut();
     this.ResetToken();
   }
   // 重置cookie

@@ -32,7 +32,7 @@ import {RouteLocationNormalizedLoaded}  from 'vue-router'
 import {useRoute} from 'vue-router'
 import {watch, nextTick, ref, PropType, defineComponent, computed} from 'vue'
 import {propTypes} from 'src/utils/propTypes';
-import {useI18n} from 'vue-i18n';
+import {useI18n} from 'vue-i18n/index';
 
 
 export default defineComponent({

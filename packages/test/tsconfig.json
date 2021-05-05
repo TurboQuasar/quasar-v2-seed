@@ -5,6 +5,12 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitAny": false,
-    "typeRoots": ["./node_modules/@types/", "./types"]
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types/", "./types"],
+    "paths": {
+      "src/*": [
+        "src/*"
+      ]
+    }
   }
 }

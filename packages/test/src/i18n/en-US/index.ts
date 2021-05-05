@@ -36,6 +36,7 @@ export default {
     dialog: 'Dialog',
     profile: 'Profile',
     parallax: 'Parallax',
+    login: 'login'
   },
   layouts: {
     profile: 'Profile',

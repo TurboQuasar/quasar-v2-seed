@@ -10,7 +10,7 @@ const _signIn = async (ctx) => {
   !success && ctx.message({ success, message: '账号密码错误', code: 201 }, 200);
 };
 const _getUserInfo = async (ctx) => {
-  const username = ctx.request.body.username;
+  const username = ctx.request.query.username;
   const { success, data } = await getUserInfo({ username });
   success && ctx.message({ success, data, message: '' }, 200);
   !success && ctx.message({ success, message: '获取失败', code: 201 }, 200);

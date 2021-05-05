@@ -35,7 +35,7 @@ import {UserModule} from 'src/store/modules/user';
 import settings from 'src/settings.json';
 import {useRoute, useRouter} from 'vue-router'
 import {useQuasar} from 'quasar';
-import {useI18n} from 'vue-i18n';
+import {useI18n} from 'vue-i18n/index';
 export default defineComponent( {
   name: 'LoginIndex',
   setup() {

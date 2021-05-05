@@ -39,7 +39,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ 'pages/login/index.vue'),
-    meta: { hidden: true },
+    meta: { hidden: true, title: 'login' },
   },
   {
     path: '/dashboard',

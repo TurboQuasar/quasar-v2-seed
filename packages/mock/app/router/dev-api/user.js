@@ -7,6 +7,6 @@ const router = new Router({
 });
 
 router.post('/login', signIn);
-router.post('/info', getUserInfo);
+router.get('/info', getUserInfo);
 router.post('/logout', logOut);
 module.exports = router;

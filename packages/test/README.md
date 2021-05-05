@@ -20,6 +20,10 @@ yarn run lint
 ### Build the app for production
 ```bash
 quasar build
+
+cd dist/spa
+
+quasar serve --history
 ```
 
 ### Customize the configuration

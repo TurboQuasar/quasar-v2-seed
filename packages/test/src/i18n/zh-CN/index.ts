@@ -36,6 +36,7 @@ export default {
     dialog: '弹窗',
     profile: '个人中心',
     parallax: '视差',
+    login: '登录'
   },
   layouts: {
     profile: '个人中心',
