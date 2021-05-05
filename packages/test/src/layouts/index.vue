@@ -340,10 +340,11 @@ export default defineComponent({
   }
   .q-icon {
     position: absolute;
-    top: 55%;
+    top: 50%;
     transform: translateY(-50%);
-    right: 5px;
+    right: 2px;
     cursor: pointer;
+    padding: 2px;
   }
 }
 </style>
